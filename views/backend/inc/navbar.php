@@ -76,6 +76,7 @@
         <i class="far fa-bell"></i>
 
         <?php $unreaded_messages = Model::getAll("booked_doctor", where: "WHERE `is_compeleted` = 'no'",limit:"LIMIT 5",sort_by:"ORDER BY `created_at` DESC") ?>
+      
         <?php if (count($unreaded_messages) < 1 )  : ?>
           <span class="badge badge-warning navbar-badge"></span>
         <?php else: ?>
@@ -93,10 +94,18 @@
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                 Patient Name : <?= $msg['name']?>
-                  <span class="float-right text-sm text-danger"><i class="fa fa-check" aria-hidden="true"></i></span>
+                  <span class="float-right text-sm text-danger"><i class="fa fa-check" aria-hidden="true"></i>
+                  <?php if($msg['is_readed']==1){
+                    echo '<i class="fa fa-check" aria-hidden="true"></i>';
+                  }
+                  
+                  
+                  ?></span>
                 </h3>
                 <p class="text-sm"> Phone :<?= $msg['phone']?></p>
                 <p class="text-sm"> Email :<?= $msg['email']?></p>
+                <?php $Doctor_name = Doctor::getRow("doctors", $msg['doctor_id'] ) ?>
+                <p class="text-sm"> Doctor Name : DR. <?= $Doctor_name['name_doctor']?></p>
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>  <?= date("F d, Y",strtotime($msg['created_at']))?></p>
               </div>
             </div>

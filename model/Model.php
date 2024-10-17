@@ -73,13 +73,13 @@ abstract class Model{
                 $sort_by
                 $limit
         ";
+        // dd($sql);
+        // die;
         $result = mysqli_query($conn, $sql);
         $rows = [];
         while($row = mysqli_fetch_assoc($result)) {
             $rows[] = $row;
         } 
-        // dd($sql);
-        // die;
         return $rows;
     }
 
@@ -110,6 +110,14 @@ abstract class Model{
         $values = implode("','",$values);
         $values="'$values'";
         $sql = "INSERT INTO `$table_name` ($fillable) VALUES ($values)";
+        $conn = Model::getConn();
+        mysqli_query($conn, $sql);
+        // dd($sql);
+        // die;
+    }
+
+    public static function DeleteRow($table_name,$where){
+        $sql = "DELETE FROM `$table_name` $where";
         $conn = Model::getConn();
         mysqli_query($conn, $sql);
         // dd($sql);

@@ -1,6 +1,8 @@
 <?php
 if (!empty($_SESSION['user_id'])): ?>
     <?php require_once('inc/header.php') ?>
+    <?php require_once BASE_PATH . 'Session.php' ?>
+
 
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -35,23 +37,17 @@ if (!empty($_SESSION['user_id'])): ?>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                <?php
-                                if (isset($_SESSION['success'])) {
-                                    require_once('views/errors/success.php');
-                                }
-                                unset($_SESSION['success'])
-                                    ?>
-                                <?php
-                                if (isset($_SESSION['errors'])) {
-                                    require_once('views/errors/error.php');
-                                }
-                                unset($_SESSION['errors'])
-                                    ?>
+                                <?php if (Session::getSession("errors")): ?>
+                                    <?php require_once BASE_PATH . "../views/errors/error.php" ?>
+                                <?php endif; ?>
+                                <?php if (Session::getSession("success")): ?>
+                                    <?php require_once BASE_PATH . "../views/errors/success.php" ?>
+                                <?php endif; ?>
                                 <!-- START -->
                                 <div class="card">
                                     <div class="card-body table-responsive p-0">
                                         <table class="table table-hover">
-                                            <thead>
+                                            <thead class="text-center">
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Name</th>
@@ -60,10 +56,9 @@ if (!empty($_SESSION['user_id'])): ?>
                                                     <th>Subject</th>
                                                     <th>Message</th>
                                                     <th>Is Read</th>
-                                                    <th>Sent At:</th>
+                                                    <th>Sent At</th>
                                                     <th>
-                                                        <a href="<?= "?admin=add-post" ?>" title="Add A New Post"
-                                                            class="btn btn-block btn-outline-success">Add</a>
+                                                        Actions
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -77,13 +72,13 @@ if (!empty($_SESSION['user_id'])): ?>
                                                         <td><?= $message['email'] ?></td>
                                                         <td><?= $message['subject'] ?></td>
                                                         <td><?= $message['message'] ?></td>
-                                                        <?php if($message['is_readed']==0):?>
-                                                        <td class="text-center text-danger">Not Yet</td>
-                                                        <?php else:?>
-                                                        <td class="text-center text-success">Yes</td>
-                                                        <?php endif;?>
+                                                        <?php if ($message['is_readed'] == 0): ?>
+                                                            <td class="text-center text-danger">Not Yet</td>
+                                                        <?php else: ?>
+                                                            <td class="text-center text-success">Yes</td>
+                                                        <?php endif; ?>
 
-                                                      
+
                                                         <td> <span class="date"> <i class="far fa-clock mr-1"></i>
                                                                 <?= date('d F Y', strtotime($message['created_at'])) ?>
                                                             </span></td>
@@ -91,7 +86,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                             <a href="?admin=getMessage&id=<?= $message['id'] ?>"
                                                                 title="Read This message"
                                                                 class="btn btn-block btn-outline-info">Read</a>
-                                                            <a href="?admin=delete-message&id=<?= $message['id'] ?>"
+                                                            <a href="?admin=deleteMessage&id=<?= $message['id'] ?>"
                                                                 title="Delete This message"
                                                                 class="btn btn-block btn-outline-danger">Delete</a>
 
@@ -106,6 +101,8 @@ if (!empty($_SESSION['user_id'])): ?>
                                 </div>
 
 
+                                <?php Session::removeSession("errors") ?>
+            <?php Session::removeSession("success") ?>
                                 <!-- END -->
                             </div>
                             <!-- /.col-md-6 -->
@@ -119,6 +116,7 @@ if (!empty($_SESSION['user_id'])): ?>
             <!-- /.content-wrapper -->
 
             <?php require_once('inc/footer.php') ?>
+
 
         <?php else:
     header("location:" . $_SERVER['HTTP_REFERER']);

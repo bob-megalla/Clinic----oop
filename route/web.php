@@ -52,62 +52,77 @@ if (isset($_GET['page'])) {
             require_once BASE_PATH . '../controllers/admin/logout.php';
             break;
         //////// -------------- DASHBOARD ROUTE SECTION ----A-ID-0--------- ///////////////
-        case "dashboard":
+        case "dashboard": /////------> Dashboard
             $active_id = 0;
             require_once BASE_PATH . '../controllers/admin/dashboard.php';
             break;
         //////// -------------- DOCTORS ROUTE SECTION ----A-ID-1--------- ///////////////
-        case "allDoctors":
+        case "allDoctors": /////------> All Doctors
             $active_id = 1;
             $page_name = "Doctors";
             require_once BASE_PATH . '../controllers/admin/doctors/allDoctors.php';
             break;
         //////// -------------- MESSAGES ROUTE SECTION -----A-ID-2------------ ///////////////
-        case "allMessages":
+        case "allMessages": /////------> All Messages
             $active_id = 2;
             $page_name = 'Messages';
             require_once BASE_PATH . '../controllers/admin/messages/allMessages.php';
             break;
-        case "getMessage":
+        case "getMessage": /////------> Get Message Read
             $active_id = 2;
             $page_name = 'Messages';
             require_once BASE_PATH . '../controllers/admin/messages/getMessage.php';
             break;
+        case "deleteMessage": /////------> Get Message Delete
+            $active_id = 2;
+            $page_name = 'Messages';
+            require_once BASE_PATH . '../controllers/admin/messages/deleteMessage.php';
+            break;
         //////// -------------- MAJORS ROUTE SECTION -------A-ID-3---------- ///////////////
-        case "allMajors":
+        case "allMajors": /////------> All Majors
             $active_id = 3;
             $page_name = 'Majors';
             require_once BASE_PATH . '../controllers/admin/majors/allMajors.php';
             break;
         //////// -------------- USERS ROUTE SECTION -------A-ID-4---------- ///////////////
-        case "allUsers":
+        case "allUsers": /////------> All Users
             $active_id = 4;
             $page_name = 'Users';
             require_once BASE_PATH . '../controllers/admin/users/allUsers.php';
             break;
         //////// -------------- SETTINGS ROUTE SECTION -------A-ID-5---------- /////////////// 
-        case "WebsiteSettings":
+        case "WebsiteSettings": /////------> All Setting Website
             $active_id = 5;
             $page_name = 'Website Settings';
             require_once BASE_PATH . '../controllers/admin/settings/allSettings.php';
             break;
         //////// -------------- NEWS ROUTE SECTION -------A-ID-6---------- ///////////////
-        case "allNews":
+        case "allNews": /////------> All News
             $active_id = 6;
             $page_name = 'News';
             require_once BASE_PATH . '../controllers/admin/news/allNews.php';
             break;
 
         //////// -------------- BOOKED ROUTE SECTION -------A-ID-7---------- ///////////////
-        case "allBooked":
+        case "allBooked": /////------> All Booked
             $active_id = 7;
             $page_name = 'Booked';
             require_once BASE_PATH . '../controllers/admin/booked/allBooked.php';
             break;
-        case "getBooked":
+        case "getBooked": /////------> All Booked Notification Read
             $active_id = 7;
             $page_name = 'Booked';
             require_once BASE_PATH . '../controllers/admin/booked/getBooked.php';
+            break;
+        case "getBookedComplete": /////------> All Booked Complete Book
+            $active_id = 7;
+            $page_name = 'Booked';
+            require_once BASE_PATH . '../controllers/admin/booked/getBookedComplete.php';
+            break;
+        case "getBookedDeleted": /////------> All Booked Complete Delete
+            $active_id = 7;
+            $page_name = 'Booked';
+            require_once BASE_PATH . '../controllers/admin/booked/getBookedDeleted.php';
             break;
 
         default:

@@ -51,7 +51,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                 <div class="card">
                                     <div class="card-body table-responsive p-0">
                                         <table class="table table-hover">
-                                            <thead>
+                                            <thead class="text-center">
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Name</th>
@@ -59,10 +59,9 @@ if (!empty($_SESSION['user_id'])): ?>
                                                     <th>Email</th>
                                                     <th>Doctor Name</th>
                                                     <th>Is Completed</th>
-                                                    <th>Created At:</th>
+                                                    <th>Created At</th>
                                                     <th>
-                                                        <a href="<?= "?admin=add-post" ?>" title="Add A New Post"
-                                                            class="btn btn-block btn-outline-success">Add</a>
+                                                        Actions
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -74,20 +73,21 @@ if (!empty($_SESSION['user_id'])): ?>
                                                         <td><?= $booked['name'] ?></td>
                                                         <td><?= $booked['phone'] ?></td>
                                                         <td><?= $booked['email'] ?></td>
-                                                        <td>DR. <?= $booked['name_doctor'] ?></td>
-                                                        <?php if($booked['is_compeleted']=="no"):?>
-                                                        <td class=" text-danger">Not Completed</td>
-                                                        <?php else:?>
-                                                        <td class="pl-5 text-success">Yes</td>
-                                                        <?php endif;?>
+                                                        <?php $doctorName = Doctor::getRow("doctors",$booked['doctor_id']); ?>
+                                                        <td>DR. <?= ucfirst($doctorName['name_doctor'] )?></td>
+                                                        <?php if ($booked['is_compeleted'] == "no"): ?>
+                                                            <td class=" text-danger">Not Completed</td>
+                                                        <?php else: ?>
+                                                            <td class="pl-5 text-success">Yes</td>
+                                                        <?php endif; ?>
                                                         <td> <span class="date"> <i class="far fa-clock mr-1"></i>
                                                                 <?= date('d F Y', strtotime($booked['created_at'])) ?>
                                                             </span></td>
                                                         <td>
-                                                            <a href="?admin=getBooked&id=<?=$msg["id"]?>"
+                                                            <a href="?admin=getBooked&id=<?= $booked["id"] ?>"
                                                                 title="Read This booked"
-                                                                class="btn btn-block btn-outline-info">Read</a>
-                                                            <a href="?admin=delete-booked&id=<?= $booked['id'] ?>"
+                                                                class="btn btn-block btn-outline-info">Complete</a>
+                                                            <a href="?admin=getBookedDeleted&id=<?= $booked['id'] ?>"
                                                                 title="Delete This booked"
                                                                 class="btn btn-block btn-outline-danger">Delete</a>
 
