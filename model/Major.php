@@ -6,15 +6,24 @@ Class Major extends Model{
 
     protected static $fillable = [
         "id",
-        "site_name",
-        "question_img",
-        "question_home",
-        "question_answer",
-        "footer_title",
-        "footer_contact",
+        "name_major",
+        "img_major"
     ];
 
-  
+    public function __construct(){
+        $table_name = self::$table_name;
+        $fillable = self::$fillable;
+        $array_table_fillable = ["$table_name"=>$fillable];
+        return dd($array_table_fillable);
+    }
+
+    public function getFillable(){
+        return self::$fillable;
+    }
+
+    public function getTableName(){
+        return self::$table_name;
+    }
 
 
 

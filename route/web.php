@@ -1,6 +1,6 @@
 <?php
 require_once 'core/functions.php';
-
+session_start();
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
     switch ($page) {
@@ -28,148 +28,95 @@ if (isset($_GET['page'])) {
         case "store_appoint":
             require_once BASE_PATH . '../controllers/doctor/store_appoint.php';
             break;
+        case "store_message":
+            require_once BASE_PATH . '../controllers/message/store_message.php';
+            break;
+        case "checkUser":
+            require_once BASE_PATH . '../controllers/admin/checkUser.php';
+            break;
+        case "addNewUser":
+            require_once BASE_PATH . '../controllers/login/addNewUser.php';
+            break;
+        case "store_book":
+            require_once BASE_PATH . '../controllers/doctor/store_book.php';
+            break;
+
+        default:
+            require_once BASE_PATH . '../views/errors/404.php';
+    }
+} elseif (isset($_GET['admin']) && isset($_SESSION['user_id'])) {
+    // dd($_SESSION['user_id']);
+    $admin_page = $_GET['admin'];
+    switch ($admin_page) {
+        case "logout":
+            require_once BASE_PATH . '../controllers/admin/logout.php';
+            break;
+        //////// -------------- DASHBOARD ROUTE SECTION ----A-ID-0--------- ///////////////
+        case "dashboard":
+            $active_id = 0;
+            require_once BASE_PATH . '../controllers/admin/dashboard.php';
+            break;
+        //////// -------------- DOCTORS ROUTE SECTION ----A-ID-1--------- ///////////////
+        case "allDoctors":
+            $active_id = 1;
+            $page_name = "Doctors";
+            require_once BASE_PATH . '../controllers/admin/doctors/allDoctors.php';
+            break;
+        //////// -------------- MESSAGES ROUTE SECTION -----A-ID-2------------ ///////////////
+        case "allMessages":
+            $active_id = 2;
+            $page_name = 'Messages';
+            require_once BASE_PATH . '../controllers/admin/messages/allMessages.php';
+            break;
+        case "getMessage":
+            $active_id = 2;
+            $page_name = 'Messages';
+            require_once BASE_PATH . '../controllers/admin/messages/getMessage.php';
+            break;
+        //////// -------------- MAJORS ROUTE SECTION -------A-ID-3---------- ///////////////
+        case "allMajors":
+            $active_id = 3;
+            $page_name = 'Majors';
+            require_once BASE_PATH . '../controllers/admin/majors/allMajors.php';
+            break;
+        //////// -------------- USERS ROUTE SECTION -------A-ID-4---------- ///////////////
+        case "allUsers":
+            $active_id = 4;
+            $page_name = 'Users';
+            require_once BASE_PATH . '../controllers/admin/users/allUsers.php';
+            break;
+        //////// -------------- SETTINGS ROUTE SECTION -------A-ID-5---------- /////////////// 
+        case "WebsiteSettings":
+            $active_id = 5;
+            $page_name = 'Website Settings';
+            require_once BASE_PATH . '../controllers/admin/settings/allSettings.php';
+            break;
+        //////// -------------- NEWS ROUTE SECTION -------A-ID-6---------- ///////////////
+        case "allNews":
+            $active_id = 6;
+            $page_name = 'News';
+            require_once BASE_PATH . '../controllers/admin/news/allNews.php';
+            break;
+
+        //////// -------------- BOOKED ROUTE SECTION -------A-ID-7---------- ///////////////
+        case "allBooked":
+            $active_id = 7;
+            $page_name = 'Booked';
+            require_once BASE_PATH . '../controllers/admin/booked/allBooked.php';
+            break;
+        case "getBooked":
+            $active_id = 7;
+            $page_name = 'Booked';
+            require_once BASE_PATH . '../controllers/admin/booked/getBooked.php';
+            break;
 
         default:
             require_once BASE_PATH . '../views/errors/404.php';
 
     }
-
-
-
-
-} elseif (isset($_GET['admin']) && isset($_SESSION['user_id'])) {
-    $admin_page = $_GET['admin'];
-    switch ($admin_page) {
-        case "logout":
-            require_once BASE_PATH . 'controllers/admin/logout.php';
-            break;
-        case "dashboard":
-            $active_id = 0;
-            $page_name = 'dashboard';
-            require_once BASE_PATH . 'controllers/admin/dashboard.php';
-            break;
-        case "posts":
-            $active_id = 1;
-            $page_name = "Posts";
-            require_once BASE_PATH . 'controllers/admin/posts.php';
-            break;
-
-        case "messages":
-            $active_id = 2;
-            $page_name = 'Messages';
-            require_once BASE_PATH . 'controllers/admin/messages.php';
-            break;
-        case "categories":
-            $active_id = 3;
-            $page_name = 'Categories';
-            require_once BASE_PATH . 'controllers/admin/categories.php';
-            break;
-        case "users":
-            $active_id = 4;
-            $page_name = 'Users';
-            require_once BASE_PATH . 'controllers/admin/users.php';
-            break;
-        case "settings":
-            $active_id = 5;
-            $page_name = 'Users';
-            require_once BASE_PATH . 'controllers/admin/settings.php';
-            break;
-        case "store-settings":
-            $active_id = 5;
-            $page_name = 'Settings';
-            require_once BASE_PATH . 'controllers/admin/settings/store-settings.php';
-            break;
-
-        case "add-post":
-            $active_id = 1;
-            require_once BASE_PATH . 'controllers/admin/posts/show-store-post.php';
-            break;
-        case "store-post":
-            $active_id = 1;
-            require_once BASE_PATH . 'controllers/admin/posts/store-post.php';
-            break;
-        case "delete-post":
-            $active_id = 1;
-            require_once BASE_PATH . 'controllers/admin/posts/delete-post.php';
-            break;
-        case "edit-post":
-            $active_id = 1;
-            require_once BASE_PATH . 'controllers/admin/posts/show-edit-post.php';
-            break;
-        case "save-edit-post":
-            $active_id = 1;
-            require_once BASE_PATH . 'controllers/admin/posts/edit-post.php';
-            break;
-        case "show_store_categories":
-            $active_id = 3;
-            require_once BASE_PATH . 'controllers/admin/categories/show_store_categories.php';
-            break;
-        case "store_category":
-            $active_id = 3;
-            require_once BASE_PATH . 'controllers/admin/categories/store-category.php';
-            break;
-        case "delete_category":
-            $active_id = 3;
-            require_once BASE_PATH . 'controllers/admin/categories/delete_category.php';
-            break;
-        case "show_edit_category":
-            $active_id = 3;
-            require_once BASE_PATH . 'controllers/admin/categories/show_edit_category.php';
-            break;
-        case "edit_category":
-            $active_id = 3;
-            require_once BASE_PATH . 'controllers/admin/categories/edit_category.php';
-            break;
-        case "delete_user":
-            $active_id = 3;
-            require_once BASE_PATH . 'controllers/admin/users/delete_user.php';
-            break;
-        case "show_edit_user":
-            $active_id = 4;
-            require_once BASE_PATH . 'controllers/admin/users/show_edit_user.php';
-            break;
-        case "edit_user":
-            $active_id = 4;
-            require_once BASE_PATH . 'controllers/admin/users/edit_user.php';
-            break;
-        case "add_user":
-            $active_id = 4;
-            require_once BASE_PATH . 'controllers/admin/users/show_store_users.php';
-            break;
-        case "store_user":
-            $active_id = 4;
-            require_once BASE_PATH . 'controllers/admin/users/store-users.php';
-            break;
-        case "delete_message":
-            $active_id = 2;
-            require_once BASE_PATH . 'controllers/admin/messages/delete-message.php';
-            break;
-
-        case "read_message":
-            $active_id = 2;
-            require_once BASE_PATH . 'controllers/admin/messages/read_message.php';
-            break;
-        case "comments":
-            $active_id = 6;
-            $page_name = 'comments';
-            require_once BASE_PATH . 'controllers/admin/comments.php';
-            break;
-        case "delete_comment":
-            $active_id = 6;
-            require_once BASE_PATH . 'controllers/admin/comments/delete_comment.php';
-            break;
-
-        case "read_comment":
-            $active_id = 6;
-            require_once BASE_PATH . 'controllers/admin/comments/read_comment.php';
-            break;
-        default:
-            require_once BASE_PATH . 'views/errors/404.php';
-
-    }
 } else {
-    // require_once BASE_PATH . 'controllers/user/home.php';
-    echo "404";
+    require_once BASE_PATH . '../controllers/user/home.php';
+    // echo "404";
 }
 
 ?>

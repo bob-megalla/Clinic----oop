@@ -20,10 +20,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
         integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Font Awesome Icons -->
+      <link rel="stylesheet" href="assets/admin/plugins/fontawesome-free/css/all.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.rtl.min.css"
         integrity="sha512-wO8UDakauoJxzvyadv1Fm/9x/9nsaNyoTmtsv7vt3/xGsug25X7fCUWEyBh1kop5fLjlcrK3GMVg8V+unYmrVA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-    <link rel="stylesheet" href="assets/styles/pages/main.css">
+        <link rel="stylesheet" href="assets/styles/pages/main.css">
+        <link rel="stylesheet" href="assets/styles/pages/main.css">
+    <link rel="icon" href="assets/img/fav.png" type="image/png" sizes="16x16"> 
+
+  
 
     <title><?= $setting['site_name']?></title>
 </head>

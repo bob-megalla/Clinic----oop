@@ -1,6 +1,6 @@
 <?php 
 abstract class Model{
-
+    
     protected static $conn;
     protected static function conn(){
         $conn = mysqli_connect("localhost","root","","clinic");
@@ -37,8 +37,7 @@ abstract class Model{
                 $limit
                 $where 
         ";
-        dd($sql);
-        // die;
+      
         $result = mysqli_query($conn, $sql);
         $rows = [];
         while($row = mysqli_fetch_assoc($result)) {
@@ -65,19 +64,22 @@ abstract class Model{
         return $rows;
     }
 
-    public static function RightJoinTable($table1,$table2,$field1,$field2,$where='',$limit=''){
+    public static function RightJoinTable($table1,$table2,$field1,$field2,$where='',$limit='',$sort_by=''){
         $conn = self::conn();
-        $sql = "SELECT $table1.*,$table2.*,$table2.id As $table2   FROM `$table1` 
+        $sql = "SELECT $table1.*,$table2.*,$table2.id As $table2 FROM `$table1` 
                 RIGHT JOIN `$table2` 
                 ON `$table1`.$field1 = `$table2`.`$field2`
                 $where 
+                $sort_by
                 $limit
         ";
         $result = mysqli_query($conn, $sql);
         $rows = [];
         while($row = mysqli_fetch_assoc($result)) {
             $rows[] = $row;
-        }
+        } 
+        // dd($sql);
+        // die;
         return $rows;
     }
 
@@ -88,6 +90,30 @@ abstract class Model{
         // dd($result);
         // die;
         return mysqli_fetch_assoc($result);
+    }
+
+    public static function getUser($table_name,$username,$password){
+        $conn = self::conn();
+        $sql = "SELECT * FROM `$table_name` WHERE `email`='$username' AND  `password` = '$password' LIMIT 1";
+        $result = mysqli_query($conn, $sql);
+        return mysqli_fetch_assoc($result);
+    }
+
+    public static function getConn(){
+        $conn = self::conn();
+        return $conn ?? "";
+    }
+
+    public static function InsertData($table_name,$fillable="",$values = []){
+        $fillable = implode("`,`",$fillable);
+        $fillable="`$fillable`";
+        $values = implode("','",$values);
+        $values="'$values'";
+        $sql = "INSERT INTO `$table_name` ($fillable) VALUES ($values)";
+        $conn = Model::getConn();
+        mysqli_query($conn, $sql);
+        // dd($sql);
+        // die;
     }
 
   

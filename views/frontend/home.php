@@ -27,7 +27,7 @@ require_once BASE_PATH . "../views/frontend/inc/navbar.php";
                         alt="major">
                     <div class="card-body d-flex flex-column gap-1 justify-content-center">
                         <h4 class="card-title fw-bold text-center"><?= $major['name_major'] ?></h4>
-                        <a href="./doctors/index.html" class="btn btn-outline-primary card-button">Browse Doctors</a>
+                        <a href="?page=getDoctors&doctor_id=<?= $major['id'] ?>" class="btn btn-outline-primary card-button">Browse Doctors</a>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -45,7 +45,7 @@ require_once BASE_PATH . "../views/frontend/inc/navbar.php";
                             <div class="card-body d-flex flex-column gap-1 justify-content-center">
                                 <h4 class="card-title fw-bold text-center">DR.<?= strtoupper($doctor['name_doctor']) ?></h4>
                                 <h6 class="card-title fw-bold text-center"><?= strtoupper($doctor['name_major']) ?></h6>
-                                <a href="?page=book&id=<?= $doctor['doctors'] ?>"
+                                <a href="?page=store_appoint&id=<?= $doctor['doctors'] ?>"
                                     class="btn btn-outline-primary card-button">Book an
                                     appointment</a>
                             </div>
@@ -69,7 +69,7 @@ require_once BASE_PATH . "../views/frontend/inc/navbar.php";
                 <p class="content">
                 <?= $new['contact_news']?>
             </p>
-            <span class="date">
+            <span class="date"> <i class="far fa-clock mr-1"></i>
             <?= date('d F Y',strtotime($new['created_at']))?>
             </span>
             </div>

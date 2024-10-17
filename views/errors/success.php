@@ -1,5 +1,5 @@
 
-    <div class="alert alert-success"><?= $_SESSION["success"]  ?></div>
+    <div class="alert alert-success m-3"><?= $_SESSION["success"]  ?></div>
 
 
 

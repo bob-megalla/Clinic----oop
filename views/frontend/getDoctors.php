@@ -11,6 +11,7 @@ require_once BASE_PATH . "../views/frontend/inc/navbar.php";
                 </ol>
             </nav>
             <div class="doctors-grid">
+                <?php if(!empty($allDoctors)):?>
                 <?php foreach ($allDoctors as $doctor): ?>
                     <li class="splide__slide">
                         <div class="card p-2" style="width: 18rem;">
@@ -26,8 +27,12 @@ require_once BASE_PATH . "../views/frontend/inc/navbar.php";
                         </div>
                     </li>
                 <?php endforeach; ?>
-          
+                <?php else:?>
+                    <div class="alert alert-danger">There Is No Doctor In This Major Yet ;)</div>
+                <?php endif;?>          
             </div>
+            <?php if(!empty($allDoctors)):?>
+
             <nav class="mt-5" aria-label="navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
@@ -46,6 +51,8 @@ require_once BASE_PATH . "../views/frontend/inc/navbar.php";
                     </li>
                 </ul>
             </nav>
+            <?php endif;?>          
+            
         </div>
     </div>
 

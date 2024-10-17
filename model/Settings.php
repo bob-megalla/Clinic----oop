@@ -14,7 +14,12 @@ Class Settings extends Model{
         "footer_contact",
     ];
 
-  
+    public function __construct(){
+        $table_name = self::$table_name;
+        $fillable = self::$fillable;
+        $array_table_fillable = ["$table_name"=>$fillable];
+        return dd($array_table_fillable);
+    }
 
 
 

@@ -1,7 +1,8 @@
 <?php
-session_start();
+// session_start();
 class Session
 {
+    
     /// setting session
     public static function setSession($key, $value)
     {
@@ -40,10 +41,13 @@ class Session
     /// flash session
     public static function flashSession($key)
     {
-        if (self::hasSession($key)) {
-            $value = self::getSession($key);
+        
+        // die;
+        if (self::getSession($key)) {
+            $errors["errors"] =self::getSession($key) ;
             self::removeSession($key);
-            return $value;
+            return $errors;
+            // dd($value);
         }
     }
 

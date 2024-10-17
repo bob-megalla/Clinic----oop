@@ -17,7 +17,11 @@
                         <a type="button" class="btn btn-outline-light navigation--button" href="?page=home">Home</a>
                         <a type="button" class="btn btn-outline-light navigation--button" href="?page=major">majors</a>
                         <a type="button" class="btn btn-outline-light navigation--button" href="?page=doctors">Doctors</a>
-                        <a type="button" class="btn btn-outline-light navigation--button" href="?page=login">login</a>
+                        <?php if(!isset($_SESSION['user_id'])):?>
+                            <a type="button" class="btn btn-outline-light navigation--button" href="?page=login">Login</a>
+                        <?php else:?>
+                            <a type="button" class="btn btn-outline-light navigation--button" href="?admin=dashboard">Dashboard</a>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,11 @@ Class News extends Model{
     ];
     /////https://www.svgrepo.com/collection/hospital-medical-duotone-vectors/
 
-
+    public function __construct(){
+        $table_name = self::$table_name;
+        $fillable = self::$fillable;
+        $array_table_fillable = ["$table_name"=>$fillable];
+        return dd($array_table_fillable);
+    }
 
 }
