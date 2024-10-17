@@ -4,6 +4,7 @@ if (!empty($_SESSION['user_id'])): ?>
 
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
+        <?php require_once BASE_PATH . 'Session.php' ?>
 
             <?php require_once('inc/navbar.php') ?>
             <?php require_once('inc/sidebar.php') ?>
@@ -35,18 +36,12 @@ if (!empty($_SESSION['user_id'])): ?>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                <?php
-                                if (isset($_SESSION['success'])) {
-                                    require_once('views/errors/success.php');
-                                }
-                                unset($_SESSION['success'])
-                                    ?>
-                                <?php
-                                if (isset($_SESSION['errors'])) {
-                                    require_once('views/errors/error.php');
-                                }
-                                unset($_SESSION['errors'])
-                                    ?>
+                            <?php if (Session::getSession("errors")): ?>
+                                    <?php require_once BASE_PATH . "../views/errors/error.php" ?>
+                                <?php endif; ?>
+                                <?php if (Session::getSession("success")): ?>
+                                    <?php require_once BASE_PATH . "../views/errors/success.php" ?>
+                                <?php endif; ?>
                                 <!-- START -->
                                 <div class="card">
                                     <div class="card-body table-responsive p-0">
@@ -115,6 +110,8 @@ if (!empty($_SESSION['user_id'])): ?>
             <!-- /.content-wrapper -->
 
             <?php require_once('inc/footer.php') ?>
+            <?php Session::removeSession("errors") ?>
+            <?php Session::removeSession("success") ?>
 
         <?php else:
     header("location:" . $_SERVER['HTTP_REFERER']);

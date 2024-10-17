@@ -79,7 +79,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                             <a href="?admin=edit-major&id=<?= $major['id'] ?>"
                                                                 title="Edit This major"
                                                                 class="btn btn-block btn-outline-info">Edit</a>
-                                                            <a href="?admin=delete-major&id=<?= $major['id'] ?>"
+                                                            <a href="?admin=DeleteMajors&id=<?= $major['id'] ?>"
                                                                 title="Delete This major"
                                                                 class="btn btn-block btn-outline-danger">Delete</a>
 

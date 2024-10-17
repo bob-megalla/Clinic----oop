@@ -124,5 +124,14 @@ abstract class Model{
         // die;
     }
 
+    public static function DeleteImage($fileName){
+        unlink($fileName);
+        // $sql = "DELETE FROM `$table_name` $where";
+        // $conn = Model::getConn();
+        // mysqli_query($conn, $sql);
+        // dd($sql);
+        // die;
+    }
+
   
 }

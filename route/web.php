@@ -62,6 +62,11 @@ if (isset($_GET['page'])) {
             $page_name = "Doctors";
             require_once BASE_PATH . '../controllers/admin/doctors/allDoctors.php';
             break;
+        case "DeleteDoctor": /////------> Delete A Doctors
+            $active_id = 1;
+            $page_name = "Doctors";
+            require_once BASE_PATH . '../controllers/admin/doctors/DeleteDoctor.php';
+            break;
         //////// -------------- MESSAGES ROUTE SECTION -----A-ID-2------------ ///////////////
         case "allMessages": /////------> All Messages
             $active_id = 2;
@@ -84,11 +89,21 @@ if (isset($_GET['page'])) {
             $page_name = 'Majors';
             require_once BASE_PATH . '../controllers/admin/majors/allMajors.php';
             break;
+        case "DeleteMajors": /////------> Delete Majors
+            $active_id = 3;
+            $page_name = 'Majors';
+            require_once BASE_PATH . '../controllers/admin/majors/DeleteMajors.php';
+            break;
         //////// -------------- USERS ROUTE SECTION -------A-ID-4---------- ///////////////
         case "allUsers": /////------> All Users
             $active_id = 4;
             $page_name = 'Users';
             require_once BASE_PATH . '../controllers/admin/users/allUsers.php';
+            break;
+        case "DeleteUser": /////------> Delete Users
+            $active_id = 4;
+            $page_name = 'Users';
+            require_once BASE_PATH . '../controllers/admin/users/DeleteUser.php';
             break;
         //////// -------------- SETTINGS ROUTE SECTION -------A-ID-5---------- /////////////// 
         case "WebsiteSettings": /////------> All Setting Website
@@ -101,6 +116,11 @@ if (isset($_GET['page'])) {
             $active_id = 6;
             $page_name = 'News';
             require_once BASE_PATH . '../controllers/admin/news/allNews.php';
+            break;
+        case "DeleteNews": /////------> Delete News
+            $active_id = 6;
+            $page_name = 'News';
+            require_once BASE_PATH . '../controllers/admin/news/DeleteNews.php';
             break;
 
         //////// -------------- BOOKED ROUTE SECTION -------A-ID-7---------- ///////////////

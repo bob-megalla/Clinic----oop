@@ -76,7 +76,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                             <a href="?admin=edit-user&id=<?= $user['id'] ?>"
                                                                 title="Edit This user"
                                                                 class="btn btn-block btn-outline-info">Edit</a>
-                                                            <a href="?admin=delete-user&id=<?= $user['id'] ?>"
+                                                            <a href="?admin=DeleteUser&id=<?= $user['id'] ?>"
                                                                 title="Delete This user"
                                                                 class="btn btn-block btn-outline-danger">Delete</a>
 

@@ -86,7 +86,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                             <a href="?admin=edit-news&id=<?= $news['id'] ?>"
                                                                 title="Edit This news"
                                                                 class="btn btn-block btn-outline-info">Edit</a>
-                                                            <a href="?admin=delete-news&id=<?= $news['id'] ?>"
+                                                            <a href="?admin=DeleteNews&id=<?= $news['id'] ?>"
                                                                 title="Delete This news"
                                                                 class="btn btn-block btn-outline-danger">Delete</a>
 

@@ -69,7 +69,9 @@ if (!empty($_SESSION['user_id'])): ?>
                                                     <tr>
                                                         <td><?= $i++ ?></td>
                                                         <td>DR. <?= $doctor['name_doctor'] ?></td>
-                                                        <td><?= $doctor['name_major'] ?>
+                                                        <td> <?php $name_major = Major::getRow("major",$doctor['major_id']) ?>
+                                                            
+                                                        <?=  $name_major["name_major"]?>
                                                             <!-- <div class="col-3">
                                                                 <img src="assets/img/majors/<?= $doctor['img_major'] ?>"
                                                                     class="card-img-top rounded-circle card-image-circle"
@@ -87,7 +89,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                             <a href="?admin=edit-doctor&id=<?= $doctor['id'] ?>"
                                                                 title="Edit This doctor"
                                                                 class="btn btn-block btn-outline-info">Edit</a>
-                                                            <a href="?admin=delete-doctor&id=<?= $doctor['id'] ?>"
+                                                            <a href="?admin=DeleteDoctor&id=<?= $doctor['id'] ?>"
                                                                 title="Delete This doctor"
                                                                 class="btn btn-block btn-outline-danger">Delete</a>
 
