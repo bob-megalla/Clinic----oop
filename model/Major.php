@@ -5,7 +5,6 @@ Class Major extends Model{
     protected static $table_name = "major";
 
     protected static $fillable = [
-        "id",
         "name_major",
         "img_major"
     ];
@@ -14,7 +13,7 @@ Class Major extends Model{
         $table_name = self::$table_name;
         $fillable = self::$fillable;
         $array_table_fillable = ["$table_name"=>$fillable];
-        return dd($array_table_fillable);
+        return $array_table_fillable;
     }
 
     public function getFillable(){

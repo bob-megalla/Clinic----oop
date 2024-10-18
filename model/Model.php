@@ -20,7 +20,6 @@ abstract class Model{
     public static function getAll($table_name,$fileds = "*",$limit='',$where='',$sort_by = ''){
         $conn = self::conn();
         $sql = "SELECT $fileds FROM `$table_name` $where $sort_by $limit";
-    //    dd($sql);
         $result = mysqli_query($conn, $sql);
         $rows = [];
         while($row = mysqli_fetch_assoc($result)) {
@@ -54,8 +53,6 @@ abstract class Model{
                 $limit
                 $where 
         ";
-        dd($sql);
-        // die;
         $result = mysqli_query($conn, $sql);
         $rows = [];
         while($row = mysqli_fetch_assoc($result)) {
@@ -73,8 +70,6 @@ abstract class Model{
                 $sort_by
                 $limit
         ";
-        // dd($sql);
-        // die;
         $result = mysqli_query($conn, $sql);
         $rows = [];
         while($row = mysqli_fetch_assoc($result)) {
@@ -87,8 +82,6 @@ abstract class Model{
         $conn = self::conn();
         $sql = "SELECT * FROM `$table_name` WHERE `id`='$id' LIMIT 1";
         $result = mysqli_query($conn, $sql);
-        // dd($result);
-        // die;
         return mysqli_fetch_assoc($result);
     }
 
@@ -112,25 +105,59 @@ abstract class Model{
         $sql = "INSERT INTO `$table_name` ($fillable) VALUES ($values)";
         $conn = Model::getConn();
         mysqli_query($conn, $sql);
+     
+    }
+
+    public static function EditData($table_name,$fillable=[],$values = [],$id){
+        // dd($values);
+        foreach($fillable as $index=>$fill){
+            foreach($values as $key =>$val){
+                // die;
+                // dd($index);
+                $sql[] = "`$fill` = '$values[$index]'";
+                break;
+            }
+            
+        }
+        // dd($sql);
+        $sql = implode(",",$sql);
+        $sql = "UPDATE `$table_name` SET $sql WHERE id=$id";
         // dd($sql);
         // die;
+        $conn = Model::getConn();
+        mysqli_query($conn, $sql);
+     
     }
 
     public static function DeleteRow($table_name,$where){
         $sql = "DELETE FROM `$table_name` $where";
         $conn = Model::getConn();
         mysqli_query($conn, $sql);
-        // dd($sql);
-        // die;
     }
 
     public static function DeleteImage($fileName){
-        unlink($fileName);
-        // $sql = "DELETE FROM `$table_name` $where";
-        // $conn = Model::getConn();
-        // mysqli_query($conn, $sql);
-        // dd($sql);
+     
+      if(file_exists( $fileName)){
+
+          unlink($fileName);
+          return true;
+      }else{
+        return false;
+      }
+    }
+
+    public static function AddNewImage($fileName,$file,$folderPath = ""){
+        // dd($_FILES);
         // die;
+        $tmp = $file[$fileName]["tmp_name"];
+        $fullPath = $file[$fileName]["full_path"];
+        $filename = $file[$fileName]["name"];
+        $type = $file[$fileName]['type'];
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        $uploadImageName = date('YmdHis') .".". $ext;
+        $uploadfilePath =  $folderPath . $uploadImageName ;
+        move_uploaded_file($tmp,$uploadfilePath);
+        return $uploadImageName;
     }
 
   

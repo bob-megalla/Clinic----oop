@@ -69,7 +69,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                     unset($_SESSION['success'])
                                         ?>
 
-                                    <form method="POST" Action="<?= '?admin=store-settings' ?>">
+                                    <form method="POST" Action="<?= '?admin=StoreSettings' ?>" enctype="multipart/form-data">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="form-group col-12">
@@ -86,7 +86,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                             file</label>
                                                         <input type="file" class="custom-file-input" id="question_img"
                                                             name="question_img"
-                                                            value="<?= $allSettings[0]['question_img'] ?>"
+                                                            value=""
                                                             placeholder="Enter question_img">
                                                     </div>
                                                     <div class="col-3"> <img

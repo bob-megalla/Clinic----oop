@@ -67,6 +67,26 @@ if (isset($_GET['page'])) {
             $page_name = "Doctors";
             require_once BASE_PATH . '../controllers/admin/doctors/DeleteDoctor.php';
             break;
+        case "AddNewDoctor": /////------> Show Form New Doctors
+            $active_id = 1;
+            $page_name = "Doctors";
+            require_once BASE_PATH . '../controllers/admin/doctors/AddNewDoctor.php';
+            break;
+        case "StoreNewDoctor": /////------> Store Form New Doctors
+            $active_id = 1;
+            $page_name = "Doctors";
+            require_once BASE_PATH . '../controllers/admin/doctors/StoreNewDoctor.php';
+            break;
+        case "EditDoctor": /////------> Store Form New Doctors
+            $active_id = 1;
+            $page_name = "Doctors";
+            require_once BASE_PATH . '../controllers/admin/doctors/EditDoctor.php';
+            break;
+        case "StoreEditDoctor": /////------> Store Form New Doctors
+            $active_id = 1;
+            $page_name = "Doctors";
+            require_once BASE_PATH . '../controllers/admin/doctors/StoreEditDoctor.php';
+            break;
         //////// -------------- MESSAGES ROUTE SECTION -----A-ID-2------------ ///////////////
         case "allMessages": /////------> All Messages
             $active_id = 2;
@@ -94,6 +114,26 @@ if (isset($_GET['page'])) {
             $page_name = 'Majors';
             require_once BASE_PATH . '../controllers/admin/majors/DeleteMajors.php';
             break;
+        case "AddNewMajor": /////------> Show Form New Major
+            $active_id = 3;
+            $page_name = 'Majors';
+            require_once BASE_PATH . '../controllers/admin/majors/AddNewMajor.php';
+            break;
+        case "StoreNewMajor": /////------> Show Form New Major
+            $active_id = 3;
+            $page_name = 'Majors';
+            require_once BASE_PATH . '../controllers/admin/majors/StoreNewMajor.php';
+            break;
+        case "EditMajor": /////------> Store Form New Doctors
+            $active_id = 3;
+            $page_name = "Majors";
+            require_once BASE_PATH . '../controllers/admin/majors/EditMajor.php';
+            break;
+        case "StoreEditMajor": /////------> Store Form New majors
+            $active_id = 3;
+            $page_name = "Majors";
+            require_once BASE_PATH . '../controllers/admin/majors/StoreEditMajor.php';
+            break;
         //////// -------------- USERS ROUTE SECTION -------A-ID-4---------- ///////////////
         case "allUsers": /////------> All Users
             $active_id = 4;
@@ -105,11 +145,36 @@ if (isset($_GET['page'])) {
             $page_name = 'Users';
             require_once BASE_PATH . '../controllers/admin/users/DeleteUser.php';
             break;
+        case "AddNewUser": /////------> Show Form New Major
+            $active_id = 4;
+            $page_name = 'Users';
+            require_once BASE_PATH . '../controllers/admin/users/AddNewUser.php';
+            break;
+        case "StoreNewUser": /////------> Show Form New Major
+            $active_id = 4;
+            $page_name = 'Users';
+            require_once BASE_PATH . '../controllers/admin/users/StoreNewUser.php';
+            break;
+        case "EditUser": /////------> Store Form New Doctors
+            $active_id = 4;
+            $page_name = "Users";
+            require_once BASE_PATH . '../controllers/admin/users/EditUser.php';
+            break;
+        case "StoreEditUser": /////------> Store Form New majors
+            $active_id = 4;
+            $page_name = "Users";
+            require_once BASE_PATH . '../controllers/admin/users/StoreEditUser.php';
+            break;
         //////// -------------- SETTINGS ROUTE SECTION -------A-ID-5---------- /////////////// 
         case "WebsiteSettings": /////------> All Setting Website
             $active_id = 5;
             $page_name = 'Website Settings';
             require_once BASE_PATH . '../controllers/admin/settings/allSettings.php';
+            break;
+        case "StoreSettings": /////------> Store Form New majors
+            $active_id = 5;
+            $page_name = "Settings";
+            require_once BASE_PATH . '../controllers/admin/settings/StoreSettings.php';
             break;
         //////// -------------- NEWS ROUTE SECTION -------A-ID-6---------- ///////////////
         case "allNews": /////------> All News
@@ -121,6 +186,26 @@ if (isset($_GET['page'])) {
             $active_id = 6;
             $page_name = 'News';
             require_once BASE_PATH . '../controllers/admin/news/DeleteNews.php';
+            break;
+        case "AddNewNew": /////------> Show Form New Major
+            $active_id = 6;
+            $page_name = 'News';
+            require_once BASE_PATH . '../controllers/admin/news/AddNewNew.php';
+            break;
+        case "StoreNewNew": /////------> Show Form New Major
+            $active_id = 6;
+            $page_name = 'News';
+            require_once BASE_PATH . '../controllers/admin/news/StoreNewNew.php';
+            break;
+        case "EditNews": /////------> Store Form New Doctors
+            $active_id = 6;
+            $page_name = "News";
+            require_once BASE_PATH . '../controllers/admin/news/EditNews.php';
+            break;
+        case "StoreEditNews": /////------> Store Form New majors
+            $active_id = 6;
+            $page_name = "News";
+            require_once BASE_PATH . '../controllers/admin/news/StoreEditNews.php';
             break;
 
         //////// -------------- BOOKED ROUTE SECTION -------A-ID-7---------- ///////////////

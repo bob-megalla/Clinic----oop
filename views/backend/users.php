@@ -58,7 +58,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                     <th>Phone</th>
                                                     <th>Email</th>
                                                     <th>
-                                                        <a href="<?= "?admin=add-post" ?>" title="Add A New User"
+                                                        <a href="<?= "?admin=AddNewUser" ?>" title="Add A New User"
                                                             class="btn btn-block btn-outline-success">Add</a>
                                                     </th>
                                                 </tr>
@@ -73,7 +73,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                         <td><?= $user['email'] ?></td>
                                                         
                                                         <td>
-                                                            <a href="?admin=edit-user&id=<?= $user['id'] ?>"
+                                                            <a href="?admin=EditUser&id=<?= $user['id'] ?>"
                                                                 title="Edit This user"
                                                                 class="btn btn-block btn-outline-info">Edit</a>
                                                             <a href="?admin=DeleteUser&id=<?= $user['id'] ?>"

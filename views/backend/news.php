@@ -60,7 +60,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                     <th>Published</th>
                                                     <th>Created At</th>
                                                     <th>
-                                                        <a href="<?= "?admin=add-post" ?>" title="Add A New Post"
+                                                        <a href="<?= "?admin=AddNewNew" ?>" title="Add A New News"
                                                             class="btn btn-block btn-outline-success">Add</a>
                                                     </th>
                                                 </tr>
@@ -83,7 +83,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                                 <?= date('d F Y', strtotime($news['created_at'])) ?>
                                                             </span></td>
                                                         <td>
-                                                            <a href="?admin=edit-news&id=<?= $news['id'] ?>"
+                                                            <a href="?admin=EditNews&id=<?= $news['id'] ?>"
                                                                 title="Edit This news"
                                                                 class="btn btn-block btn-outline-info">Edit</a>
                                                             <a href="?admin=DeleteNews&id=<?= $news['id'] ?>"

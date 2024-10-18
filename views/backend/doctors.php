@@ -58,7 +58,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                     <th>Major</th>
                                                     <th>Image</th>
                                                     <th>
-                                                        <a href="<?= "?admin=add-post" ?>" title="Add A New Post"
+                                                        <a href="<?= "?admin=AddNewDoctor" ?>" title="Add A New Doctor"
                                                             class="btn btn-block btn-outline-success">Add</a>
                                                     </th>
                                                 </tr>
@@ -86,7 +86,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <a href="?admin=edit-doctor&id=<?= $doctor['id'] ?>"
+                                                            <a href="?admin=EditDoctor&id=<?= $doctor['id'] ?>"
                                                                 title="Edit This doctor"
                                                                 class="btn btn-block btn-outline-info">Edit</a>
                                                             <a href="?admin=DeleteDoctor&id=<?= $doctor['id'] ?>"

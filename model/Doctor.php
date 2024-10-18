@@ -5,7 +5,6 @@ Class Doctor extends Model{
     protected static $table_name = "doctors";
 
     protected static $fillable = [
-        "id",
         "name_doctor",
         "major_id",
         "img_doctor"

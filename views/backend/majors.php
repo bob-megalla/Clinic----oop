@@ -57,7 +57,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                     <th>Major Name</th>
                                                     <th>Image</th>
                                                     <th>
-                                                        <a href="<?= "?admin=add-post" ?>" title="Add A New Post"
+                                                        <a href="<?= "?admin=AddNewMajor" ?>" title="Add A New Major"
                                                             class="btn btn-block btn-outline-success">Add</a>
                                                     </th>
                                                 </tr>
@@ -76,7 +76,7 @@ if (!empty($_SESSION['user_id'])): ?>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <a href="?admin=edit-major&id=<?= $major['id'] ?>"
+                                                            <a href="?admin=EditMajor&id=<?= $major['id'] ?>"
                                                                 title="Edit This major"
                                                                 class="btn btn-block btn-outline-info">Edit</a>
                                                             <a href="?admin=DeleteMajors&id=<?= $major['id'] ?>"
